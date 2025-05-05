@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package github.com.structxz.grpc_simple;
+
+option go_package = "github.com/structxz/grpc_simple/pkg/api/notes;notes";
+
+// NoteInfo - information of the note
+message NoteInfo {
+	// title - name of the note
+	string title = 1 [json_name = "title"];
+	// content - content of the note
+	string content = 2 [json_name = "content"];
+}
+
+// Note - full note model
+message Note {
+	// id - unique id of the note
+	uint64 id = 1 [json_name = "id"];
+	// info - information about note
+	NoteInfo info = 2 [json_name = "info"];
+}
+
+// SaveNoteRequest - request to save the note
+message SaveNoteRequest {
+	// info - request's content
+	NoteInfo info = 1 [json_name = "info"];
+}
+
+// SaveNoteResponse - response to save the note
+message SaveNoteResponse {
+	// id - unique id of the note
+	uint64 id = 1 [json_name = "id"];
+}
+
+// ListNoteRequest - request to get all notes
+message ListNotesRequest {}
+
+// ListNoteResponse - response to get all notes
+message ListNotesResponse {
+	repeated Note notes = 1 [json_name = "notes"];
+
+	message Foo {
+		int64 int = 1;
+	}
+
+	message Bar {
+		int32 int = 1;
+	}
+
+	oneof meta {
+		Foo foo = 2;
+		Bar bar = 3;
+	}
+}

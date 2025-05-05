@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package github.com.structxz.grpc_simple;
+
+import "api/notes/messages.proto";
+
+option go_package = "github.com/structxz/grpc_simple/pkg/api/notes;notes";
+
+
+service NotesService {
+	rpc SaveNote(SaveNoteRequest) returns (SaveNoteResponse) {}
+
+	rpc ListNotes(ListNotesRequest) returns (ListNotesResponse) {}
+}
