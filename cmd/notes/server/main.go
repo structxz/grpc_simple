@@ -119,5 +119,10 @@ func main() {
 	// grpc_cli call --json_input --json_output localhost:8082 NotesService/SaveNote '{"info:{"title": "note"}"}'
 	// ListNotes:
 	// grpc_cli call --json_input --json_output localhost:8082 NotesService/ListNotes '{}'
+
+	
+	// s.GracefulStop()
+	// some timeout
+	// s.Stop() -- forced stop, if graceful stop did not stop
 }
 
